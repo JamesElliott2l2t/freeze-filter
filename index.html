@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Freeze Frame</title>
+  <style>
+    :root { color-scheme: light dark; --fg: #242424; --bg: #fff; --muted: #616161; --live: #107c10; --frozen: #c50f1f; --accent: #5b5fc7; }
+    @media (prefers-color-scheme: dark) { :root { --fg: #fff; --bg: #1f1f1f; --muted: #adadad; --live: #54b054; --frozen: #e37d80; } }
+    body { margin: 0; padding: 16px; font: 14px/1.4 "Segoe UI", system-ui, sans-serif; color: var(--fg); background: var(--bg); }
+    h1 { font-size: 16px; margin: 0 0 12px; }
+    .row { display: flex; align-items: center; gap: 12px; }
+    #status { font-weight: 600; }
+    #status[data-state="live"] { color: var(--live); }
+    #status[data-state="frozen"] { color: var(--frozen); }
+    button { font: inherit; padding: 6px 16px; border: 0; border-radius: 4px; background: var(--accent); color: #fff; cursor: pointer; }
+    button:disabled { opacity: .5; cursor: default; }
+    p { color: var(--muted); }
+    pre { font-size: 11px; white-space: pre-wrap; color: var(--muted); max-height: 200px; overflow: auto; }
+  </style>
+</head>
+<body>
+  <h1>Freeze Frame</h1>
+  <div class="row">
+    <span id="status" data-state="live">Live</span>
+    <button id="toggle">Freeze</button>
+  </div>
+  <p>Or pick the <strong>Freeze</strong> filter in Video effects. Pick <strong>None</strong> to go live again.</p>
+  <pre id="log"></pre>
+  <script src="https://cdn.jsdelivr.net/npm/@microsoft/teams-js@2.58.0/dist/umd/MicrosoftTeams.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
